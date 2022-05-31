@@ -1,29 +1,14 @@
-<div style="font-family: Arial">
-  <button id="reload">Reload</button>
-  <button id="back">Go Back</button>
-  <button id="forward">Go Forward</button>
+<div style="font-family: sans-serif">
   <button id="youtube">Open Youtube.com</button>
   Volume: <input type="range" min="0" max="100" value="100" id="range">
-  <p>User ID: <span id="userId"></span></p>
   <p>Current website: <span id="currentSite"></p>
 </div>
-<iframe id="iframe" style="height:720px;width:1280px"></iframe>
+<div id="div" style="height:720px;width:1280px"></div>
 <script type="module">
   import Hyperbeam from "https://unpkg.com/@hyperbeam/iframe@latest/dist/index.js"
   const resp = await fetch("/computer")
   const computer = await resp.json()
-  const embedURL = computer.embed_url
-  const hb = await Hyperbeam(iframe, embedURL)
-  userId.innerText = hb.userId
-  reload.addEventListener("click", () => {
-    hb.tabs.reload()
-  })
-  back.addEventListener("click", () => {
-    hb.tabs.goBack()
-  })
-  forward.addEventListener("click", () => {
-    hb.tabs.goForward()
-  })
+  const hb = await Hyperbeam(div, computer.embed_url)
   youtube.addEventListener("click", () => {
     hb.tabs.update({ url: "https://youtube.com" })
   })
@@ -31,8 +16,7 @@
     hb.volume = e.target.value / 100
   })
   hb.tabs.onUpdated.addListener((tabId, changeInfo) => {
-    if (changeInfo.title) {
+    if (changeInfo.title)
       currentSite.innerText = changeInfo.title
-    }
   })
 </script>

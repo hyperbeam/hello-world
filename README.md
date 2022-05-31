@@ -1,6 +1,6 @@
-# hyperbeam-example
+# hello-world
 
-A "hello world" for using the Hyperbeam API.
+An example that demonstrates how to get started with the Hyperbeam API.
 
 # Running locally
 
