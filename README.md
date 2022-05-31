@@ -9,3 +9,7 @@ An example that demonstrates how to get started with the Hyperbeam API.
 3. Run `npm install`
 4. Run `npm run start`
 5. Visit http://localhost:8080
+
+# Where are the docs?
+
+https://showy-backpack-b3f.notion.site/API-Design-eb9874bd1ef54c22ba7197324ce22231
