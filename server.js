@@ -3,11 +3,12 @@ const express = require('express')
 const axios = require('axios')
 const app = express()
 
-let computer
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '/index.html'))
 })
+
 // Get a cloud computer object. If no object exists, create it.
+let computer
 app.get('/computer', async (req, res) => {
   if (computer) {
     res.send(computer)
@@ -19,4 +20,7 @@ app.get('/computer', async (req, res) => {
   computer = resp.data
   res.send(computer)
 })
-app.listen(8080, () => console.log('Server start at http://localhost:8080')
+
+app.listen(8080, () => {
+  console.log('Server start at http://localhost:8080')
+})

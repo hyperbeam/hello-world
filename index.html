@@ -1,20 +1,24 @@
 <div style="font-family: sans-serif">
-  <button id="youtube">Open Youtube.com</button>
+  <button id="gotoYouTubeBtn">Open Youtube.com</button>
   Volume: <input type="range" min="0" max="100" value="100" id="range">
   <p>Current website: <span id="currentSite"></p>
 </div>
-<div id="div" style="height:720px;width:1280px"></div>
+<div id="cloudComputerDiv" style="height:720px;width:1280px"></div>
 <script type="module">
   import Hyperbeam from "https://unpkg.com/@hyperbeam/iframe@latest/dist/index.js"
   const resp = await fetch("/computer")
-  const computer = await resp.json()
-  const hb = await Hyperbeam(div, computer.embed_url)
-  youtube.addEventListener("click", () => {
+  const data = await resp.json()
+  const hb = await Hyperbeam(cloudComputerDiv, data.embed_url)
+  // Programmatically navigate to websites
+  gotoYouTubeBtn.addEventListener("click", () => {
     hb.tabs.update({ url: "https://youtube.com" })
   })
+  // Control the user's local volume
   range.addEventListener("change", (e) => {
     hb.volume = e.target.value / 100
   })
+  // Listen to tab changes
+  // (e.g. get the tab's new title when the user visits a different site)
   hb.tabs.onUpdated.addListener((tabId, changeInfo) => {
     if (changeInfo.title)
       currentSite.innerText = changeInfo.title
