@@ -12,4 +12,4 @@ An example that demonstrates how to get started with the Hyperbeam API.
 
 # Where are the docs?
 
-https://showy-backpack-b3f.notion.site/API-Design-eb9874bd1ef54c22ba7197324ce22231
+https://docs.hyperbeam.com
