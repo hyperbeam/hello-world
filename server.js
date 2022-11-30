@@ -21,6 +21,6 @@ app.get('/computer', async (req, res) => {
   res.send(computer)
 })
 
-app.listen(8080, () => {
+app.listen(80, () => {
   console.log('Server start at http://localhost:8080')
 })
