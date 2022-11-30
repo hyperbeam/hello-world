@@ -21,6 +21,6 @@ app.get('/computer', async (req, res) => {
   res.send(computer)
 })
 
-app.listen(0.0.0.0:$PORT, () => {
-  console.log('Server start at http://localhost:8080')
-})
+app.listen(PORT, '0.0.0.0', () => {
+   console.log(`Server Started at Port ${PORT}`)
+});
